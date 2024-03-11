@@ -9,11 +9,11 @@
 
 Quick description...
 
-| Prop         |                                                          Type | Required | Default | Description                                |
-| :----------- | ------------------------------------------------------------: | -------- | ------- | ------------------------------------------ |
-| isVisible    |                                                       boolean |          | true    | Render condition of the wrapped elements   |
-| classNames   |                                                        string | ✓        |         | CSS classes for the wrapper itself         |
-| fadeDuration | number \| { fadeInDuration: number, fadeOutDuration: number } |          | 0.5     | duration of the fade animations in seconds |
+| Prop           |                                  Type                                   | Required | Default | Description                                |
+| :------------- | :---------------------------------------------------------------------: | :------: | :-----: | :----------------------------------------- |
+| `classNames`   |                                `string`                                 |    ✓     |         | CSS classes for the wrapper itself         |
+| `isVisible`    |                                `boolean`                                |          | `true`  | Render condition of the wrapped elements   |
+| `fadeDuration` | `number`<br>or<br>`{ fadeInDuration: number, fadeOutDuration: number }` |          |  `0.5`  | duration of the fade animations in seconds |
 
 Code Example...
 
