@@ -16,9 +16,9 @@ interface AnimationDurations {
 
 interface GSAPFadeSlideWrapperProps {
   children: React.ReactNode;
-  classNames: string;
-  slideDirection?: SlideDirections;
+  classNames?: string;
   isVisible?: boolean;
+  slideDirection?: SlideDirections;
   animationDuration?: number | AnimationDurations;
   slideLength?: number;
 }
@@ -27,14 +27,15 @@ interface GSAPFadeSlideWrapperProps {
  * A wrapper component that uses GSAP for fade-in and fade-out as well as slide-in and slide-out animations.
  *
  * @param {React.ReactNode} children The child component/s that this wrapper will contain. These are the elements that will be subject to the fade in/out animations.
- * @param {string} classNames Additional CSS class names to apply to the wrapper for further styling or specificity. You may use Tailwind CSS, Bootstrap or custom CSS classes depending on your application's configuration.
+ * @param {string} classNames Optional, additional CSS class names to apply to the wrapper for further styling or specificity. You may use Tailwind CSS, Bootstrap or custom CSS classes depending on your application's configuration.
  * @param {boolean} isVisible Optional, determines if the child component should be visible/rendered or not. When `true`, the child component will fade in. When transitioning from `true` to `false`, the child component will fade out before being removed. If not set, the wrapper and it's child components will fade in but won't have an option to be removed/fade out.
+ * @param {string} slideDirection Optional, specify the direction from where the wrapper will slide in and in which direction it will slide out to.
  * @param {number | { animationInDuration: number, animationOutDuration: number }} animationDuration Optional, sets the duration for both the fade and slide animations. You also can set the animation's in and out duration lengths individually by passing an object value to this prop with the respective duration lengths.
  * @param {number} slideLength Optional, sets the slide length in pixels (how far should the wrapper slide in or out?).
  */
 export default function GSAPFadeSlideWrapper({
   children,
-  classNames,
+  classNames = "",
   isVisible = true,
   animationDuration = 0.5,
   slideDirection = "slideUp",
