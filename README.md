@@ -13,6 +13,8 @@ Adds a fade animation to the provided child elements.
 
 The GSAPFadeWrapper serves as a container component designed to apply a fade animation to its child elements. By utilizing the `classNames` parameter, you can assign CSS classes to enhance styling. If integrated in your project, you might also use Tailwind CSS classes, for example. In the absence of a specified condition for the `isVisible` prop, the component will automatically initiate a fade-in effect for the child elements, without the possibility of a fade-out transition. The `fadeDuration` prop accommodates a number value to set identical fade-in and fade-out times, or an object containing `fadeInDuration` and `fadeOutDuration` properties, allowing for distinct durations for each phase of the fade effect.
 
+### Table Prop Overview
+
 | Prop           |                                  Type                                   | Required | Default | Description                                |
 | :------------- | :---------------------------------------------------------------------: | :------: | :-----: | :----------------------------------------- |
 | `classNames`   |                                `string`                                 |          |  `""`   | CSS classes for the wrapper itself         |
