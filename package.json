@@ -1,6 +1,6 @@
 {
   "name": "gsap-quicktools",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "Some React components based on gsap for quick access to common animations",
   "main": "dist/cjs/index.js",
   "files": [
