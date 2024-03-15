@@ -15,12 +15,12 @@ The GSAPFadeWrapper serves as a container component designed to apply a fade ani
 
 ### Table Prop Overview
 
-| Prop           |                                  Type                                   | Required | Default | Description                                |
-| :------------- | :---------------------------------------------------------------------: | :------: | :-----: | :----------------------------------------- |
-| `elementType`  |                           `React.ElementType`                           |          |  `div`  | The wrapper's element type                 |
-| `classNames`   |                                `string`                                 |          |  `""`   | CSS classes for the wrapper itself         |
-| `isVisible`    |                                `boolean`                                |          | `true`  | Render condition of the wrapped elements   |
-| `fadeDuration` | `number`<br>or<br>`{ fadeInDuration: number, fadeOutDuration: number }` |          |  `0.5`  | Duration of the fade animations in seconds |
+| Prop           |                                  Type                                   | Default | Description                                          |
+| :------------- | :---------------------------------------------------------------------: | :-----: | :--------------------------------------------------- |
+| `elementType`  |                           `React.ElementType`                           |  `div`  | Optional, the wrapper's element type                 |
+| `classNames`   |                                `string`                                 |  `""`   | Optional, CSS classes for the wrapper itself         |
+| `isVisible`    |                                `boolean`                                | `true`  | Optional, render condition of the wrapped elements   |
+| `fadeDuration` | `number`<br>or<br>`{ fadeInDuration: number, fadeOutDuration: number }` |  `0.5`  | Optional, duration of the fade animations in seconds |
 
 ### Example
 
@@ -45,14 +45,14 @@ Adds both a fade and slide animation to the provided child elements
 
 ### Table Prop Overview
 
-| Prop                |                                          Type                                           | Required |  Default  | Description                              |
-| :------------------ | :-------------------------------------------------------------------------------------: | :------: | :-------: | :--------------------------------------- |
-| `elementType`       |                                   `React.ElementType`                                   |          |   `div`   | The wrapper's element type               |
-| `classNames`        |                                        `string`                                         |          |   `""`    | CSS classes for the wrapper itself       |
-| `isVisible`         |                                        `boolean`                                        |          |  `true`   | Render condition of the wrapped elements |
-| `slideDirection`    | `slideDown` <br>or<br> `slideUp` <br>or<br> `slideFromRight` <br>or<br> `slideFromLeft` |          | `slideUp` | Slide direction                          |
-| `animationDuration` |    `number`<br>or<br>`{ animationInDuration: number, animationOutDuration: number }`    |          |   `0.5`   | Fade & slide duration in seconds         |
-| `slideLength`       |                                        `number`                                         |          |   `50`    | Slide length                             |
+| Prop                |                                          Type                                           |  Default  | Description                                        |
+| :------------------ | :-------------------------------------------------------------------------------------: | :-------: | :------------------------------------------------- |
+| `elementType`       |                                   `React.ElementType`                                   |   `div`   | Optional, the wrapper's element type               |
+| `classNames`        |                                        `string`                                         |   `""`    | Optional, CSS classes for the wrapper itself       |
+| `isVisible`         |                                        `boolean`                                        |  `true`   | Optional, render condition of the wrapped elements |
+| `slideDirection`    | `slideDown` <br>or<br> `slideUp` <br>or<br> `slideFromRight` <br>or<br> `slideFromLeft` | `slideUp` | Optional, slide direction                          |
+| `animationDuration` |    `number`<br>or<br>`{ animationInDuration: number, animationOutDuration: number }`    |   `0.5`   | Optional, Fade & slide duration in seconds         |
+| `slideLength`       |                                        `number`                                         |   `50`    | Optional, slide length                             |
 
 ### Example
 
