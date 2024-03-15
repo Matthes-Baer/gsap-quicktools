@@ -9,7 +9,7 @@ interface FadeDuration {
 }
 
 interface GSAPFadeWrapperProps {
-  children: React.ReactNode;
+  children?: React.ReactNode;
   elementType?: React.ElementType;
   classNames?: string;
   isVisible?: boolean;

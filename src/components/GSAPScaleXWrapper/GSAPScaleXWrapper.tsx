@@ -3,25 +3,17 @@ import { useState } from "react";
 import { gsap } from "gsap";
 import { useGSAP } from "@gsap/react";
 
-type SlideDirections =
-  | "slideDown"
-  | "slideUp"
-  | "slideFromRight"
-  | "slideFromLeft";
-
 interface AnimationDurations {
   animationInDuration: number;
   animationOutDuration: number;
 }
 
-interface GSAPFadeSlideWrapperProps {
+interface GSAPScaleXWrapperProps {
   children?: React.ReactNode;
   elementType?: React.ElementType;
   classNames?: string;
   isVisible?: boolean;
-  slideDirection?: SlideDirections;
   animationDuration?: number | AnimationDurations;
-  slideLength?: number;
 }
 
 /**
@@ -31,34 +23,18 @@ interface GSAPFadeSlideWrapperProps {
  * @param {React.ReactNode} children - The child component/s that this wrapper will contain. These are the elements that will be subject to the fade and slide animations.
  * @param {string} [classNames = ""] - Optional, additional CSS class names to apply to the wrapper for further styling or specificity. Defaults to an empty string. You may use Tailwind CSS, Bootstrap, or custom CSS classes depending on your application's configuration.
  * @param {boolean} [isVisible = true] - Optional, determines if the child component should be visible/rendered or not. When `true`, the child component will fade in and slide in. When transitioning from `true` to `false`, the child component will fade out and slide out before being removed. Defaults to `true`.
- * @param {string} [slideDirection = "slideUp"] - Optional, specify the direction from where the wrapper will slide in and in which direction it will slide out to. Default is "none", indicating no slide animation.
  * @param {number | { animationInDuration: number, animationOutDuration: number }} [animationDuration = 0.5] - Optional, sets the duration for both the fade and slide animations. You can also set the animation's in and out duration lengths individually by passing an object with the respective duration lengths. Defaults to 0.5 seconds for both in and out if not set.
- * @param {number} [slideLength = 50] - Optional, sets the slide length in pixels (how far should the wrapper slide in or out?). Defaults to 0, indicating no slide.
-
  */
 
-export default function GSAPFadeSlideWrapper({
+export default function GSAPScaleXWrapper({
   children,
   elementType = "div",
   classNames = "",
   isVisible = true,
   animationDuration = 0.5,
-  slideDirection = "slideUp",
-  slideLength = 50,
-}: GSAPFadeSlideWrapperProps) {
-  const slideDirections: Record<SlideDirections, "x" | "y"> = {
-    slideUp: "y",
-    slideDown: "y",
-    slideFromRight: "x",
-    slideFromLeft: "x",
-  };
-
+}: GSAPScaleXWrapperProps) {
   const [shouldRender, setShouldRender] = useState(isVisible);
   const gsapWrapper = useRef<HTMLDivElement | null>(null);
-  const slideDirectionKey = slideDirections[slideDirection];
-  const positiveSlideTarget = ["slideUp", "slideFromRight"].includes(
-    slideDirection
-  );
 
   // Check for specific animation duration lengths
   const animationInDuration =
@@ -77,11 +53,8 @@ export default function GSAPFadeSlideWrapper({
       } else if (!isVisible && shouldRender) {
         // Animate Out
         gsap.to(gsapWrapper.current, {
-          opacity: 0,
+          scaleX: 0,
           duration: animationOutDuration,
-          [slideDirectionKey]: positiveSlideTarget
-            ? slideLength
-            : slideLength * -1,
           onComplete: () => setShouldRender(false),
         });
       }
@@ -96,14 +69,10 @@ export default function GSAPFadeSlideWrapper({
         gsap.fromTo(
           gsapWrapper.current,
           {
-            opacity: 0,
-            [slideDirectionKey]: positiveSlideTarget
-              ? slideLength
-              : slideLength * -1,
+            scaleX: 0,
           },
           {
-            opacity: 1,
-            [slideDirectionKey]: 0,
+            scaleX: 1,
             duration: animationInDuration,
           }
         );
@@ -118,7 +87,7 @@ export default function GSAPFadeSlideWrapper({
     elementType,
     {
       className: classNames,
-      style: { opacity: 0 },
+      style: { transformOrigin: "center center" },
       ref: gsapWrapper,
     },
     children
