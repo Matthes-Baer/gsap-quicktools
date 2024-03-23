@@ -27,7 +27,6 @@ interface GSAPScaleXWrapperProps {
  * @param {number | { animationInDuration: number, animationOutDuration: number }} [animationDuration = 0.5] - Optional, sets the duration for the in and out animations. You can also set the animation's in and out duration lengths individually by passing an object with the respective duration lengths.
  * @param {string} [transformOrigin = "center center"] - Optional, change the transformOrigin if needed.
  */
-
 export default function GSAPScaleXWrapper({
   children,
   elementType = "div",
