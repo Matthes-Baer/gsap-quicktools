@@ -118,7 +118,7 @@ Children elements/components may be included.
 
 ## ScrollElement
 
-This component enables scrolling within a separate component or element through clicks or touches. For instance, users can navigate a list by clicking on this ScrollElement component. To enable this functionality, it's essential to link a reference (ref) to both this component and the target element intended for scrolling. This component doesn't utilize GSAP, therefore the missing `GSAP` prefix.
+This component enables scrolling within a separate component or element through clicks. For instance, users can navigate a list by clicking on this ScrollElement component. To enable this functionality, it's essential to link a reference (ref) to both this component and the target element intended for scrolling. This component doesn't utilize GSAP, therefore the missing `GSAP` prefix. To handle cases where text is selected while holding down the button, consider using (User Select)[https://developer.mozilla.org/en-US/docs/Web/CSS/user-select]. While touch events for mobile devices are also set up, they don't work quite properly as of right now.
 
 ### Table Prop Overview
 
