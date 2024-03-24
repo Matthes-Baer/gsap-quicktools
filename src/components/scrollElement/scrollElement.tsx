@@ -1,4 +1,4 @@
-import React, { forwardRef, useRef } from "react";
+import React, { forwardRef, useEffect, useRef } from "react";
 
 interface GSAPScrollElementProps {
   children?: React.ReactNode;
@@ -71,19 +71,38 @@ const ScrollElement = forwardRef<HTMLElement, GSAPScrollElementProps>(
       }
     };
 
+    const handleTouchMove = (event: TouchEvent) => {
+      event.preventDefault(); // This keeps the touch active.
+    };
+
     const handleContextMenu = (event: React.MouseEvent) => {
       event.preventDefault();
       stopScrolling();
     };
 
+    // Setup and cleanup event listeners
+    useEffect(() => {
+      const currentElement = ref && "current" in ref ? ref.current : null;
+      if (currentElement) {
+        currentElement.addEventListener("touchmove", handleTouchMove, {
+          passive: false,
+        });
+      }
+      return () => {
+        if (currentElement) {
+          currentElement.removeEventListener("touchmove", handleTouchMove);
+        }
+      };
+    }, [ref]);
+
     return React.createElement(
       elementType,
       {
-        className: classNames,
+        className: `${classNames} accelerate`, // Assuming 'accelerate' is a class that applies the GPU acceleration CSS
         onMouseDown: (event: React.MouseEvent) => startScrolling(event),
         onMouseUp: stopScrolling,
         onMouseLeave: stopScrolling,
-        onTouchStart: () => startScrolling(),
+        onTouchStart: startScrolling, // Here we assume that the event's default behavior is not required to be prevented
         onTouchEnd: stopScrolling,
         onContextMenu: handleContextMenu,
       },
