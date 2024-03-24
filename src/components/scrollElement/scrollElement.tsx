@@ -35,23 +35,23 @@ const ScrollElement = forwardRef<HTMLElement, GSAPScrollElementProps>(
     const scrollInterval = useRef<number | null>(null);
     const verticalScrollDirection = "vertical" in scrollDirection;
 
-    const startScrolling = (event?: React.MouseEvent) => {
-      if (event?.button !== 0) return;
+    const startScrolling = (event?: React.MouseEvent | React.TouchEvent) => {
+      if (!event || !("button" in event) || event.button === 0) {
+        const element = ref && "current" in ref ? ref.current : null;
 
-      const element = ref && "current" in ref ? ref.current : null;
-
-      if (element) {
-        scrollInterval.current = window.setInterval(() => {
-          if (verticalScrollDirection) {
-            const directionMultiplier =
-              scrollDirection.vertical === "down" ? 1 : -1;
-            element.scrollTop += directionMultiplier * scrollAmount;
-          } else {
-            const directionMultiplier =
-              scrollDirection.horizontal === "right" ? 1 : -1;
-            element.scrollLeft += directionMultiplier * scrollAmount;
-          }
-        }, 10);
+        if (element) {
+          scrollInterval.current = window.setInterval(() => {
+            if (verticalScrollDirection) {
+              const directionMultiplier =
+                scrollDirection.vertical === "down" ? 1 : -1;
+              element.scrollTop += directionMultiplier * scrollAmount;
+            } else {
+              const directionMultiplier =
+                scrollDirection.horizontal === "right" ? 1 : -1;
+              element.scrollLeft += directionMultiplier * scrollAmount;
+            }
+          }, 10);
+        }
       }
     };
 
