@@ -35,6 +35,16 @@ const ScrollElement = forwardRef<HTMLElement, GSAPScrollElementProps>(
     const scrollInterval = useRef<number | null>(null);
     const verticalScrollDirection = "vertical" in scrollDirection;
 
+    const handleMouseDown = (event: React.MouseEvent<Element, MouseEvent>) => {
+      event.preventDefault();
+      startScrolling(event);
+    };
+
+    const handleTouchStart = (event: React.TouchEvent<Element>) => {
+      event.preventDefault();
+      startScrolling();
+    };
+
     const startScrolling = (event?: React.MouseEvent | React.TouchEvent) => {
       if (!event || !("button" in event) || event.button === 0) {
         const element = ref && "current" in ref ? ref.current : null;
@@ -71,10 +81,10 @@ const ScrollElement = forwardRef<HTMLElement, GSAPScrollElementProps>(
       elementType,
       {
         className: classNames,
-        onMouseDown: (event: React.MouseEvent) => startScrolling(event),
+        onMouseDown: handleMouseDown,
         onMouseUp: stopScrolling,
         onMouseLeave: stopScrolling,
-        onTouchStart: () => startScrolling(),
+        onTouchStart: handleTouchStart,
         onTouchEnd: stopScrolling,
         onContextMenu: handleContextMenu,
       },
