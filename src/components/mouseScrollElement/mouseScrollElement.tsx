@@ -12,7 +12,7 @@ interface GSAPScrollElementProps {
 }
 
 /**
- * A component that enables scrolling through a target element when the user clicks or touches this component. It's designed for both mouse and touch interactions.
+ * A component that enables scrolling through a target element when the user holds down the mouse on this component. This component doesn't support touch events on mobile devices out of the box. For enhanced mobile interaction, consider using libraries like Hammer.js, which offer comprehensive touch event handling capabilities.
  *
  * @param {React.ReactNode} children - Optional, the children components to be rendered inside this component. These can be any valid React nodes, including elements, strings, numbers, or fragments.
  * @param {React.ElementType} [elementType="button"] - Optional, the type of element to be used as the container for the children. This can be any valid HTML tag name as a string (e.g., 'div', 'span', 'section') or a React component.
@@ -21,7 +21,7 @@ interface GSAPScrollElementProps {
  * @param {{ horizontal: "left" | "right" } | { vertical: "down" | "up" }} [scrollDirection={ vertical: "down" }] - Optional, the direction in which the target element will be scrolled. This prop accepts an object with either a 'horizontal' or 'vertical' key, specifying the scroll direction as 'left', 'right', 'down', or 'up'.
  * @param {React.RefObject<HTMLElement>} ref - Required (technically not, but without a connected ref nothing will happen), a React ref created by `useRef` or `createRef` that points to the target element you want to scroll. This ref is used to programmatically access the target element and control its scroll behavior. When using this component you would pass the same ref to this component and the element that needs to be scrolled through.
  */
-const ScrollElement = forwardRef<HTMLElement, GSAPScrollElementProps>(
+const MouseScrollElement = forwardRef<HTMLElement, GSAPScrollElementProps>(
   (
     {
       children,
@@ -52,7 +52,7 @@ const ScrollElement = forwardRef<HTMLElement, GSAPScrollElementProps>(
       }
     };
 
-    const startScrolling = (event?: React.MouseEvent | React.TouchEvent) => {
+    const startScrolling = (event?: React.MouseEvent) => {
       if (!event || !("button" in event) || event.button === 0) {
         if (!isScrolling.current) {
           isScrolling.current = true;
@@ -83,8 +83,6 @@ const ScrollElement = forwardRef<HTMLElement, GSAPScrollElementProps>(
         onMouseDown: (event: React.MouseEvent) => startScrolling(event),
         onMouseUp: stopScrolling,
         onMouseLeave: stopScrolling,
-        onTouchStart: () => startScrolling(),
-        onTouchEnd: stopScrolling,
         onContextMenu: handleContextMenu,
       },
       children
@@ -92,4 +90,4 @@ const ScrollElement = forwardRef<HTMLElement, GSAPScrollElementProps>(
   }
 );
 
-export default ScrollElement;
+export default MouseScrollElement;
