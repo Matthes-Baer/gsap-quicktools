@@ -122,13 +122,13 @@ This component enables scrolling within a separate component or element through 
 
 ### Table Prop Overview
 
-| Prop                |                                 Type                                  |        Default         | Description                                           |
-| :------------------ | :-------------------------------------------------------------------: | :--------------------: | :---------------------------------------------------- |
-| `elementType`       |                          `React.ElementType`                          |         `div`          | Optional, the component's element type                |
-| `classNames`        |                               `string`                                |          `""`          | Optional, CSS classes for the component itself        |
-| `scrollAmount`      |                               `number`                                |          `2`           | Optional, determines the scroll speed                 |
-| `animationDuration` | `{ horizontal: "left" or "right" }` or `{ vertical: "down" or "up" }` | `{ vertical: "down" }` | Optional, sets the scroll direction                   |
-| `ref`               |                    `React.RefObject<HTMLElement>`                     |                        | Required, the ref that targets the scrollable element |
+| Prop              |                                 Type                                  |        Default         | Description                                           |
+| :---------------- | :-------------------------------------------------------------------: | :--------------------: | :---------------------------------------------------- |
+| `elementType`     |                          `React.ElementType`                          |         `div`          | Optional, the component's element type                |
+| `classNames`      |                               `string`                                |          `""`          | Optional, CSS classes for the component itself        |
+| `scrollAmount`    |                               `number`                                |          `2`           | Optional, determines the scroll speed                 |
+| `scrollDirection` | `{ horizontal: "left" or "right" }` or `{ vertical: "down" or "up" }` | `{ vertical: "down" }` | Optional, sets the scroll direction                   |
+| `ref`             |                    `React.RefObject<HTMLElement>`                     |                        | Required, the ref that targets the scrollable element |
 
 Children elements/components may be included.
 
