@@ -25,18 +25,16 @@ interface GSAPFadeSlideWrapperProps {
 }
 
 /**
- * A wrapper component that uses GSAP for fade-in and fade-out as well as slide-in and slide-out animations.
+ * A wrapper component that uses GSAP for fade-in & slide-in as well as fade-out & slide-out animations.
  *
- *
- * @param {React.ReactNode} children - The child component/s that this wrapper will contain. These are the elements that will be subject to the fade and slide animations.
- * @param {React.ElementType} [elementType = "div"] - Optional, set the element type (like `h1` or `p`) that acts as the parent container for the provided child elements. Defaults to "div".
- * @param {string} [classNames = ""] - Optional, additional CSS class names to apply to the wrapper for further styling or specificity. Defaults to an empty string. You may use Tailwind CSS, Bootstrap, or custom CSS classes depending on your application's configuration.
- * @param {boolean} [isVisible = true] - Optional, determines if the child component should be visible/rendered or not. When `true`, the child component will fade in and slide in. When transitioning from `true` to `false`, the child component will fade out and slide out before being removed. If not set, the wrapper and it's child components will enter but won't have an option to be removed.
- * @param {string} [slideDirection = "slideUp"] - Optional, specify the direction from where the wrapper will slide in and in which direction it will slide out to. Default is "none", indicating no slide animation.
- * @param {number} [slideLength = 50] - Optional, sets the slide length in pixels (how far should the wrapper slide in or out?). Defaults to 0, indicating no slide.
+ * @param {React.ReactNode} children - Optional, the children components to be rendered inside this component. These can be any valid React nodes, including elements, strings, numbers, or fragments.
+ * @param {React.ElementType} [elementType = "div"] - Optional, the type of element to be used as the container for the children. This can be any valid HTML tag name as a string (e.g., 'div', 'span', 'section') or a React component.
+ * @param {string} [classNames = ""] - Optional, additional CSS class names to apply to the container element for styling purposes. This prop can accommodate classes from CSS frameworks like Tailwind CSS or Bootstrap, as well as custom styles.
+ * @param {boolean} [isVisible = true] - Optional, determines if the children components should be rendered or not. When `true`, the children components will fade in and also slide in. When transitioning from `true` to `false`, the children components will fade out and also slide out before being removed. If not set, the wrapper and it's children components will enter but won't have an option to be removed.
+ * @param {string} [slideDirection = "slideUp"] - Optional, specify the direction from where the wrapper will slide in and in which direction it will slide out to.
+ * @param {number} [slideLength = 50] - Optional, sets the slide length in pixels.
  * @param {number | { animationInDuration: number, animationOutDuration: number }} [animationDuration = 0.5] - Optional, sets the duration for both the fade and slide animations. You can also set the animation's in and out duration lengths individually by passing an object with the respective duration lengths.
  */
-
 export default function GSAPFadeSlideWrapper({
   children,
   elementType = "div",

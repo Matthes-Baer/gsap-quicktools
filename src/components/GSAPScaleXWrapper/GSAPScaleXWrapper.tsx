@@ -20,12 +20,12 @@ interface GSAPScaleXWrapperProps {
 /**
  * A wrapper component that uses GSAP for an opening and closing animation based on the scaleX property.
  *
- * @param {React.ReactNode} children - The child component/s that this wrapper will contain. These are the elements that will be subject to the fade and slide animations.
- * @param {React.ElementType} [elementType = "div"] - Optional, set the element type (like `h1` or `p`) that acts as the parent container for the provided child elements. Defaults to "div".
- * @param {string} [classNames = ""] - Optional, additional CSS class names to apply to the wrapper for further styling or specificity. Defaults to an empty string. You may use Tailwind CSS, Bootstrap, or custom CSS classes depending on your application's configuration.
- * @param {boolean} [isVisible = true] - Optional, determines if the child component should be visible/rendered or not. When `true`, the child component will fade in and slide in. When transitioning from `true` to `false`, the child component will fade out and slide out before being removed. If not set, the wrapper and it's child components will enter but won't have an option to be removed.
+ * @param {React.ReactNode} children - Optional, the children components to be rendered inside this component. These can be any valid React nodes, including elements, strings, numbers, or fragments.
+ * @param {React.ElementType} [elementType = "div"] - Optional, the type of element to be used as the container for the children. This can be any valid HTML tag name as a string (e.g., 'div', 'span', 'section') or a React component.
+ * @param {string} [classNames = ""] - Optional, additional CSS class names to apply to the container element for styling purposes. This prop can accommodate classes from CSS frameworks like Tailwind CSS or Bootstrap, as well as custom styles.
+ * @param {boolean} [isVisible = true] - Optional, determines if the children components should be rendered or not. When `true`, the children components will scaleX in. When transitioning from `true` to `false`, the children components will scaleX out before being removed. If not set, the wrapper and it's children components will enter but won't have an option to be removed.
  * @param {number | { animationInDuration: number, animationOutDuration: number }} [animationDuration = 0.5] - Optional, sets the duration for the in and out animations. You can also set the animation's in and out duration lengths individually by passing an object with the respective duration lengths.
- * @param {string} [transformOrigin = "center center"] - Optional, change the transformOrigin if needed.
+ * @param {string} [transformOrigin = "center center"] - Optional, change the transformOrigin for the scaleX animations if needed.
  */
 export default function GSAPScaleXWrapper({
   children,

@@ -8,19 +8,20 @@ interface GSAPScrollElementProps {
   scrollDirection?:
     | { horizontal: "left" | "right" }
     | { vertical: "down" | "up" };
+  ref: React.RefObject<HTMLElement>;
 }
 
 /**
  * A component that enables scrolling through a target element when the user clicks or touches this component. It's designed for both mouse and touch interactions.
  *
- * @param {React.ReactNode} children - The children components to be rendered inside this component. These can be any valid React nodes, including elements, strings, numbers, or fragments.
- * @param {React.ElementType} [elementType="button"] - The type of element to be used as the container for the children. This can be any valid HTML tag name as a string (e.g., 'div', 'span', 'section') or a React component.
- * @param {string} [classNames=""] - Additional CSS class names to apply to the container element for styling purposes. This prop can accommodate classes from CSS frameworks like Tailwind CSS or Bootstrap, as well as custom styles.
- * @param {number} [scrollAmount=2] - The number of pixels the target element should scroll with each interval. This value determines the speed and distance of the scrolling. A higher value results in faster and longer scrolling.
- * @param {{ horizontal: "left" | "right" } | { vertical: "down" | "up" }} [scrollDirection={ vertical: "down" }] - The direction in which the target element will be scrolled. This prop accepts an object with either a 'horizontal' or 'vertical' key, specifying the scroll direction as 'left', 'right', 'down', or 'up'.
- * @param {React.RefObject<HTMLElement>} ref - A React ref created by `useRef` or `createRef` that points to the target element you want to scroll. This ref is used to programmatically access the target element and control its scroll behavior. When using this component you would pass the same ref to this component and the element that needs to be scrolled through.
+ * @param {React.ReactNode} children - Optional, the children components to be rendered inside this component. These can be any valid React nodes, including elements, strings, numbers, or fragments.
+ * @param {React.ElementType} [elementType="button"] - Optional, the type of element to be used as the container for the children. This can be any valid HTML tag name as a string (e.g., 'div', 'span', 'section') or a React component.
+ * @param {string} [classNames=""] - Optional, additional CSS class names to apply to the container element for styling purposes. This prop can accommodate classes from CSS frameworks like Tailwind CSS or Bootstrap, as well as custom styles.
+ * @param {number} [scrollAmount=2] - Optional, the number of pixels the target element should scroll with each interval. This value determines the speed of the scrolling. A higher value results in faster scrolling.
+ * @param {{ horizontal: "left" | "right" } | { vertical: "down" | "up" }} [scrollDirection={ vertical: "down" }] - Optional, the direction in which the target element will be scrolled. This prop accepts an object with either a 'horizontal' or 'vertical' key, specifying the scroll direction as 'left', 'right', 'down', or 'up'.
+ * @param {React.RefObject<HTMLElement>} ref - Required (technically not, but without a connected ref nothing will happen), a React ref created by `useRef` or `createRef` that points to the target element you want to scroll. This ref is used to programmatically access the target element and control its scroll behavior. When using this component you would pass the same ref to this component and the element that needs to be scrolled through.
  */
-const GSAPScrollElement = forwardRef<HTMLElement, GSAPScrollElementProps>(
+const ScrollElement = forwardRef<HTMLElement, GSAPScrollElementProps>(
   (
     {
       children,
@@ -82,4 +83,4 @@ const GSAPScrollElement = forwardRef<HTMLElement, GSAPScrollElementProps>(
   }
 );
 
-export default GSAPScrollElement;
+export default ScrollElement;
