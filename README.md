@@ -1,3 +1,7 @@
+## License Information
+
+Attention! Have in mind that this package is based on GSAP. Please inform yourself about [their license](https://gsap.com/licensing/) before using this package.
+
 ## Components
 
 | Name                                          |                                                          Description |
